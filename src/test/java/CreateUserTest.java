@@ -50,8 +50,32 @@ public class CreateUserTest extends BaseApiTest {
     @Test
     @DisplayName("Negative invalid User data test")
     @Description("Creation user test with absence email data field")
-    public void emptyRequiredFieldUserCreation() {
+    public void emptyRequiredFieldEmailUserCreation() {
         UserCreateModel user = new UserCreateModel(EMPTY_EMAIL, PASSWORD, NAME);
+        emptyRequiredFieldUser(user)
+                .then()
+                .statusCode(SC_FORBIDDEN)
+                .body("success", equalTo(false))
+                .body("message", equalTo("Email, password and name are required fields"));
+    }
+
+    @Test
+    @DisplayName("Negative invalid User data test")
+    @Description("Creation user test with absence password data field")
+    public void emptyRequiredFieldPasswordUserCreation() {
+        UserCreateModel user = new UserCreateModel(EMAIL, EMPTY_PASSWORD, NAME);
+        emptyRequiredFieldUser(user)
+                .then()
+                .statusCode(SC_FORBIDDEN)
+                .body("success", equalTo(false))
+                .body("message", equalTo("Email, password and name are required fields"));
+    }
+
+    @Test
+    @DisplayName("Negative invalid User data test")
+    @Description("Creation user test with absence name data field")
+    public void emptyRequiredFieldNameUserCreation() {
+        UserCreateModel user = new UserCreateModel(EMAIL, PASSWORD, EMPTY_NAME);
         emptyRequiredFieldUser(user)
                 .then()
                 .statusCode(SC_FORBIDDEN)

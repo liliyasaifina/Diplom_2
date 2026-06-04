@@ -12,6 +12,8 @@ public class UserData {
 
 
     public static final String EMPTY_EMAIL = "";
+    public static final String EMPTY_PASSWORD = "";
+    public static final String EMPTY_NAME = "";
     public static final String INVALID_EMAIL = faker.internet().emailAddress();
     public static final String INVALID_PASSWORD = faker.name().firstName() + System.currentTimeMillis();
 

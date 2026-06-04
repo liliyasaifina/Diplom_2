@@ -36,7 +36,6 @@ public class CreateOrderTest extends BaseApiTest {
             successfulAuthorizedOrderCreation(authorizedOrder, accessToken)
                     .then()
                     .statusCode(SC_OK)
-                    .statusCode(SC_OK)
                     .body("success", equalTo(true))
                     .body("order.owner.name", equalTo(UserData.NAME));
     }
